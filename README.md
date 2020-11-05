@@ -1,6 +1,6 @@
 # Mind Click Frontend
 
-A frontend web application that provides you with a Mental Health Therapist Catalogue. The app uses the following (API)[https://github.com/santiagorodriguezbermudez/mindclickbackend]. With the App the user can access a catalogue of therapist, create a list of favorites or checkout the detail of each therapist. 
+A frontend web application that provides you with a Mental Health Therapist Catalogue. The app uses the following [API](https://github.com/santiagorodriguezbermudez/mindclickbackend). With the App the user can access a catalogue of therapist, create a list of favorites or checkout the detail of each therapist. 
 
 ## Live version
 
