@@ -4,13 +4,18 @@ import {
   Switch,
   Route,
 } from 'react-router-dom';
+import Nav from './Nav';
+import Footer from './Footer';
+import Landing from './Landing';
 
 const App = () => (
   <Router>
     <div>
       <Switch>
         <Route exact path="/">
-          Hello World!
+          <Nav />
+          <Landing />
+          <Footer />
         </Route>
       </Switch>
     </div>
