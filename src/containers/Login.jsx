@@ -6,7 +6,7 @@ import Loading from '../components/Loading';
 import { loginApiCall } from '../actions/api';
 import { validateCurrentToken } from '../helpers/tokenLocalStorage';
 
-const Login = ({ application, loginApiCall }) => {
+const Login = ({ application, loginApiCall, authenticationMessage }) => {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
 
@@ -54,9 +54,14 @@ const Login = ({ application, loginApiCall }) => {
     );
   }
 
+  const renderError = () => (
+    `Login Failed. Error: ${authenticationMessage}. Please try again`
+  );
+
   return (
     <div>
       {application === 'LOADING' ? <Loading /> : renderForm()}
+      {authenticationMessage !== '' ? <p>{renderError()}</p> : null}
     </div>
   );
 };
@@ -64,10 +69,12 @@ const Login = ({ application, loginApiCall }) => {
 Login.propTypes = {
   application: PropTypes.string.isRequired,
   loginApiCall: PropTypes.func.isRequired,
+  authenticationMessage: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = state => ({
   authenticationToken: state.authentication.token,
+  authenticationMessage: state.authentication.message,
   application: state.application,
 });
 

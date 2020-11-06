@@ -3,8 +3,13 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import mcLogo from '../assets/images/mindclick-logo.png';
+import { loggedOutUser } from '../actions/authentication';
 
-const Nav = ({ userLogged }) => {
+const Nav = ({ userLogged, loggedOutUser }) => {
+  const handleLogout = () => {
+    loggedOutUser();
+  };
+
   const renderLogin = () => (
     <div>
       <Link to="/login">Login</Link>
@@ -14,7 +19,12 @@ const Nav = ({ userLogged }) => {
 
   const renderLogout = () => (
     <div>
-      <Link to="/logout">Logout</Link>
+      <button
+        onClick={() => handleLogout()}
+        type="button"
+      >
+        Logout
+      </button>
     </div>
   );
 
@@ -28,14 +38,19 @@ const Nav = ({ userLogged }) => {
 
 Nav.propTypes = {
   userLogged: PropTypes.bool.isRequired,
+  loggedOutUser: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => (
   {
-    userLogged: state.authentication,
+    userLogged: state.authentication.loggedIn,
   }
 );
 
-const connectedNav = connect(mapStateToProps)(Nav);
+const mapDispatchToProps = dispatch => ({
+  loggedOutUser: () => dispatch(loggedOutUser()),
+});
+
+const connectedNav = connect(mapStateToProps, mapDispatchToProps)(Nav);
 
 export default connectedNav;

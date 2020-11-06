@@ -4,12 +4,11 @@ import {
   Switch,
   Route,
 } from 'react-router-dom';
-import Nav from './Nav';
+import Nav from '../containers/Nav';
 import Footer from './Footer';
 import Landing from './Landing';
-import Login from './Login';
-import Signup from './Signup';
-import Logout from './Logout';
+import Login from '../containers/Login';
+import Signup from '../containers/Signup';
 import TherapistList from '../containers/TherapistList';
 
 const App = () => (
@@ -23,9 +22,6 @@ const App = () => (
         </Route>
         <Route exact path="/login">
           <Login />
-        </Route>
-        <Route exact path="/logout">
-          <Logout />
         </Route>
         <Route exact path="/signup">
           <Signup />

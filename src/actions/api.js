@@ -3,6 +3,7 @@ import REACT_APP_API_URL from '../constants/constants';
 import {
   loggedInUser,
   signUpError,
+  loginError,
 } from './authentication';
 import updateState from './application';
 
@@ -47,11 +48,11 @@ export const loginApiCall = user => (
         'Content-Type': 'application/json',
       },
     }).then(response => {
+      dispatch(updateState('IDLE'));
       dispatch(loggedInUser(response.data.auth_token));
-      dispatch(updateState('IDLE'));
     }).catch(e => {
-      dispatch(signUpError(e.response.data.message));
       dispatch(updateState('IDLE'));
+      dispatch(loginError(e.response.data.message));
     });
   }
 );

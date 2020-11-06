@@ -3,8 +3,13 @@ export const loggedInUser = token => ({
   token,
 });
 
+export const loginError = errorMessage => ({
+  type: 'ERROR_ON_LOGIN',
+  errorMessage,
+});
+
 export const signUpError = errorMessage => ({
-  type: 'Error on Signup',
+  type: 'ERROR_ON_SIGNUP',
   errorMessage,
 });
 

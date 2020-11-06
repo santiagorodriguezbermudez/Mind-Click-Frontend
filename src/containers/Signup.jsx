@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import Loading from './Loading';
+import Loading from '../components/Loading';
 import { signupApiCall } from '../actions/api';
 import { validateCurrentToken } from '../helpers/tokenLocalStorage';
 
