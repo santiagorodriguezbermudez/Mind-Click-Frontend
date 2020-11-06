@@ -7,6 +7,10 @@ import {
 import Nav from './Nav';
 import Footer from './Footer';
 import Landing from './Landing';
+import Login from './Login';
+import Signup from './Signup';
+import Logout from './Logout';
+import TherapistList from '../containers/TherapistList';
 
 const App = () => (
   <Router>
@@ -16,6 +20,18 @@ const App = () => (
           <Nav />
           <Landing />
           <Footer />
+        </Route>
+        <Route exact path="/login">
+          <Login />
+        </Route>
+        <Route exact path="/logout">
+          <Logout />
+        </Route>
+        <Route exact path="/signup">
+          <Signup />
+        </Route>
+        <Route exact path="/therapists">
+          <TherapistList />
         </Route>
       </Switch>
     </div>

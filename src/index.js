@@ -1,12 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
 import App from './components/App';
+import combinedReducers from './reducers/index';
 import './index.css';
 import './reset.css';
 
+require('dotenv').config();
+
+const store = createStore(combinedReducers, applyMiddleware(thunk));
+
+store.subscribe(() => {
+  console.log('state updated', store.getState());
+});
+
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root'),
 );
