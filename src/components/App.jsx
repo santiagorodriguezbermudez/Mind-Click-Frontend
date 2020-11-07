@@ -27,7 +27,9 @@ const App = () => (
           <Signup />
         </Route>
         <Route exact path="/therapists">
+          <Nav />
           <TherapistList />
+          <Footer />
         </Route>
       </Switch>
     </div>

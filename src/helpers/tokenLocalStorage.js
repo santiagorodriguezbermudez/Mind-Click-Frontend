@@ -25,3 +25,7 @@ export const saveCurrentToken = token => {
     expirationDate: Date.now() + 86400000,
   }));
 };
+
+export const getCurrentToken = () => (
+  JSON.parse(localStorage.getItem('authToken')).token
+);

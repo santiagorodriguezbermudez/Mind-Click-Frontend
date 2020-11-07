@@ -1,7 +1,7 @@
 import { saveCurrentToken, removeCurrentToken } from '../helpers/tokenLocalStorage';
 import authenticationInitializer from '../constants/initializers';
 
-const authentication = (state = authenticationInitializer, action) => {
+const authentication = (state = authenticationInitializer(), action) => {
   switch (action.type) {
     case 'LOGGED_IN_USER':
       saveCurrentToken(action.token);
