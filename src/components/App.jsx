@@ -10,6 +10,7 @@ import Landing from './Landing';
 import Login from '../containers/Login';
 import Signup from '../containers/Signup';
 import TherapistList from '../containers/TherapistList';
+import TherapistDetail from '../containers/TherapistDetail';
 
 const App = () => (
   <Router>
@@ -29,6 +30,11 @@ const App = () => (
         <Route exact path="/therapists">
           <Nav />
           <TherapistList />
+          <Footer />
+        </Route>
+        <Route path="/therapists/:id">
+          <Nav />
+          <TherapistDetail />
           <Footer />
         </Route>
       </Switch>

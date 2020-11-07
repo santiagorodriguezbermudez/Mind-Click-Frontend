@@ -11,8 +11,7 @@ const Therapist = ({ therapist }) => (
     <div className="relative">
       <img
         src={therapist.image}
-        alt="company"
-        className="w-full"
+        alt="therapist"
         onError={e => {
           e.target.onerror = null;
           e.target.src = errorImage;
@@ -26,11 +25,11 @@ const Therapist = ({ therapist }) => (
     <div className="p-2">
       <p className="text-2xl">
         Name:
-        {therapist.fullName}
+        {therapist.full_name}
       </p>
       <p className="text-xl">
         Year of experience:
-        {therapist.yearsExperience}
+        {therapist.years_experience}
       </p>
       <p>
         Description:

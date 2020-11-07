@@ -25,6 +25,9 @@ const TherapistList = ({
 
   return (
     <div>
+      <button type="button">
+        View Favorites
+      </button>
       <div className="therapist-container">
         {application === 'LOADING' ? <Loading /> : renderTherapists()}
       </div>

@@ -7,7 +7,7 @@ import {
 } from './authentication';
 import updateState from './application';
 import { getCurrentToken } from '../helpers/tokenLocalStorage';
-import { fetchTherapists } from './therapists';
+import { fetchTherapists, showTherapist } from './therapists';
 
 export const signupApiCall = user => (
   dispatch => {
@@ -71,15 +71,32 @@ export const fetchTherapistsAPI = () => (
         Authorization: getCurrentToken(),
       },
     }).then(response => {
-      console.log('This is the respond');
-      console.log(response.data.data);
       dispatch(updateState('IDLE'));
       dispatch(fetchTherapists(response.data.data.therapists));
-    }).catch(e => {
+    }).catch(() => {
       dispatch(updateState('IDLE'));
-      console.log(e);
-      console.log(getCurrentToken());
       dispatch(fetchTherapists([]));
+    });
+  }
+);
+
+export const fetchTherapistAPI = id => (
+  dispatch => {
+    dispatch(updateState('LOADING'));
+    axios({
+      method: 'GET',
+      url: `${REACT_APP_API_URL}/therapists/${id}`,
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: getCurrentToken(),
+      },
+    }).then(response => {
+      dispatch(updateState('IDLE'));
+      dispatch(showTherapist(response.data.data.therapist));
+    }).catch(() => {
+      dispatch(updateState('IDLE'));
+      dispatch(showTherapist({}));
     });
   }
 );

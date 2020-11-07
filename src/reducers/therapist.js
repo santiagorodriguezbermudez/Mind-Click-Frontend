@@ -2,7 +2,7 @@ const therapist = (state = {}, action) => {
   switch (action.type) {
     case 'SHOW_THERAPIST':
       return {
-        ...action.stock,
+        ...action.therapist,
       };
     default:
       return state;
