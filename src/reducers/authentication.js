@@ -10,6 +10,7 @@ const authentication = (state = authenticationInitializer(), action) => {
         loggedIn: true,
         token: action.token,
         message: '',
+        id: action.id,
       };
     case 'LOGGED_OUT_USER':
       removeCurrentToken();

@@ -81,27 +81,6 @@ export const fetchTherapistsAPI = () => (
   }
 );
 
-export const fetchFavoriteTherapistsAPI = id => (
-  dispatch => {
-    dispatch(updateState('LOADING'));
-    axios({
-      method: 'GET',
-      url: `${REACT_APP_API_URL}/users/:${id}/favorite/`,
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        Authorization: getCurrentToken(),
-      },
-    }).then(response => {
-      dispatch(updateState('IDLE'));
-      dispatch(fetchTherapists(response.data.data.therapists));
-    }).catch(() => {
-      dispatch(updateState('IDLE'));
-      dispatch(fetchTherapists([]));
-    });
-  }
-);
-
 // Hits the endpoint to fetch a specific therapist
 export const fetchTherapistAPI = id => (
   dispatch => {
@@ -120,6 +99,68 @@ export const fetchTherapistAPI = id => (
     }).catch(() => {
       dispatch(updateState('IDLE'));
       dispatch(showTherapist({}));
+    });
+  }
+);
+
+// Favorites end points
+export const fetchFavoriteTherapistsAPI = id => (
+  dispatch => {
+    dispatch(updateState('LOADING'));
+    axios({
+      method: 'GET',
+      url: `${REACT_APP_API_URL}/users/${id}/favorites/`,
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: getCurrentToken(),
+      },
+    }).then(response => {
+      dispatch(updateState('IDLE'));
+      dispatch(fetchTherapists(response.data.data.therapists));
+    }).catch(() => {
+      dispatch(updateState('IDLE'));
+      dispatch(fetchTherapists([]));
+    });
+  }
+);
+
+export const addFavoriteAPI = (userId, therapistId) => (
+  dispatch => {
+    dispatch(updateState('LOADING'));
+    axios({
+      method: 'POST',
+      url: `${REACT_APP_API_URL}/users/${userId}/favorites`,
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: getCurrentToken(),
+      },
+      params: {
+        user_id: userId,
+        therapist_id: therapistId,
+      },
+    }).then(() => {
+      dispatch(updateState('IDLE'));
+      dispatch(fetchFavoriteTherapistsAPI(userId));
+    });
+  }
+);
+
+export const removeFavoriteAPI = (userId, favoriteId) => (
+  dispatch => {
+    dispatch(updateState('LOADING'));
+    axios({
+      method: 'DELETE',
+      url: `${REACT_APP_API_URL}/users/${userId}/favorites/${favoriteId}`,
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: getCurrentToken(),
+      },
+    }).then(() => {
+      dispatch(updateState('IDLE'));
+      dispatch(fetchFavoriteTherapistsAPI(userId));
     });
   }
 );

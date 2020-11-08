@@ -16,6 +16,7 @@ const authenticationInitializer = () => {
     loggedIn,
     token,
     message: '',
+    id: '',
   });
 };
 

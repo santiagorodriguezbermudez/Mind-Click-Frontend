@@ -22,7 +22,7 @@ const TherapistDetail = ({
 
   const renderTherapistDetail = () => (
     <div>
-      <section className="stock-general">
+      <section>
         <p>{therapist.id}</p>
         <p>{therapist.full_name}</p>
       </section>

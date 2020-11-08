@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import Therapist from '../components/Therapist';
-import { fetchTherapistsAPI, fetchFavoriteTherapistsAPI } from '../actions/api';
+import {
+  fetchTherapistsAPI,
+  fetchFavoriteTherapistsAPI,
+  addFavoriteAPI,
+  removeFavoriteAPI,
+} from '../actions/api';
 import Loading from '../components/Loading';
 import { validateCurrentToken } from '../helpers/tokenLocalStorage';
 
@@ -13,9 +18,17 @@ const TherapistList = ({
   application,
   getFavorites,
   authentication,
+  addFavoriteTherapist,
+  removeFavoriteTherapist,
 }) => {
   const renderTherapists = () => therapistList.map(therapist => (
-    <Therapist key={therapist.id} therapist={therapist} />
+    <Therapist
+      key={therapist.id}
+      therapist={therapist}
+      userId={authentication.id}
+      addFavoriteTherapist={addFavoriteTherapist}
+      removeFavoriteTherapist={removeFavoriteTherapist}
+    />
   ));
 
   React.useEffect(() => {
@@ -50,6 +63,8 @@ TherapistList.propTypes = {
   getFavorites: PropTypes.func.isRequired,
   application: PropTypes.string.isRequired,
   authentication: PropTypes.objectOf(PropTypes.string).isRequired,
+  addFavoriteTherapist: PropTypes.func.isRequired,
+  removeFavoriteTherapist: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => (
@@ -66,6 +81,12 @@ const mapDispatchToProps = dispatch => ({
   },
   getFavorites: id => {
     dispatch(fetchFavoriteTherapistsAPI(id));
+  },
+  addFavoriteTherapist: (userId, therapistId) => {
+    dispatch(addFavoriteAPI(userId, therapistId));
+  },
+  removeFavoriteTherapist: (userId, favoriteId) => {
+    dispatch(removeFavoriteAPI(userId, favoriteId));
   },
 });
 
