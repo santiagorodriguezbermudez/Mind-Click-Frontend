@@ -59,6 +59,7 @@ export const loginApiCall = user => (
   }
 );
 
+// Hits the endpoint to fetch all of the therapists
 export const fetchTherapistsAPI = () => (
   dispatch => {
     dispatch(updateState('LOADING'));
@@ -80,6 +81,28 @@ export const fetchTherapistsAPI = () => (
   }
 );
 
+export const fetchFavoriteTherapistsAPI = id => (
+  dispatch => {
+    dispatch(updateState('LOADING'));
+    axios({
+      method: 'GET',
+      url: `${REACT_APP_API_URL}/users/:${id}/favorite/`,
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: getCurrentToken(),
+      },
+    }).then(response => {
+      dispatch(updateState('IDLE'));
+      dispatch(fetchTherapists(response.data.data.therapists));
+    }).catch(() => {
+      dispatch(updateState('IDLE'));
+      dispatch(fetchTherapists([]));
+    });
+  }
+);
+
+// Hits the endpoint to fetch a specific therapist
 export const fetchTherapistAPI = id => (
   dispatch => {
     dispatch(updateState('LOADING'));
