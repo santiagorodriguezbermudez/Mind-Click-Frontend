@@ -3,11 +3,6 @@ export const fetchTherapists = therapists => ({
   therapists,
 });
 
-export const favoriteTherapists = therapists => ({
-  type: 'FAVORITE_THERAPISTS',
-  therapists,
-});
-
 export const showTherapist = therapist => ({
   type: 'SHOW_THERAPIST',
   therapist,
