@@ -5,6 +5,9 @@ import { Carousel } from 'react-responsive-carousel';
 import { Link } from 'react-router-dom';
 import '../assets/styles/landing.css';
 import processImg from '../assets/images/VP.svg';
+import testimonialImg1 from '../assets/images/martin.jpg';
+import testimonialImg2 from '../assets/images/paul.jpg';
+import testimonialImg3 from '../assets/images/michael.jpg';
 
 const Landing = () => {
   const arrayText = ['a Coach.', 'a Psychiatrist.', 'a psychologist.', 'mental health.', 'happiness.'];
@@ -41,18 +44,43 @@ const Landing = () => {
           <img src={processImg} alt="process" />
         </div>
       </div>
-      <section>
+      <section className="carousel">
         <Carousel
           autoPlay="true"
+          showArrows="true"
+          infiniteLoop="true"
+          showThumbs={false}
         >
-          <div>
-            <p>First Testimonial</p>
+          <div className="testimonial">
+            <img src={testimonialImg1} alt="testimonial" />
+            <p className="legend">
+              It is an option that makes life easier and allows me to continue having
+              therapy up close without leaving home.
+              <span>
+                - Maria Teresa U.
+              </span>
+            </p>
           </div>
-          <div>
-            <p>Second Testimonial</p>
+          <div className="testimonial">
+            <img src={testimonialImg2} alt="testimonial" />
+            <p className="legend">
+              I believe 100% that mental health is very important in the life of a human being
+              and we need to pay a lot of attention,
+              especially in these moments where one meets stress and anxiety.
+              <span>
+                - Ana O.
+              </span>
+            </p>
           </div>
-          <div>
-            <p>Third Testimonial</p>
+          <div className="testimonial">
+            <img src={testimonialImg3} alt="testimonial" />
+            <p className="legend">
+              It is essential to give importance to mental health,
+              I think that sometimes we neglect it because of the laziness of looking for someone.
+              <span>
+                - Adriana H.
+              </span>
+            </p>
           </div>
         </Carousel>
       </section>

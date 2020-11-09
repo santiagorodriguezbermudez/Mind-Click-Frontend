@@ -12,7 +12,6 @@
 }
 
 .navbar {
-  position: absolute;
   margin: 0 auto;
   padding: 1.5rem 0.25rem 1.5rem 1rem;
   width: 100%;
@@ -22,6 +21,7 @@
   justify-content: space-between;
   color: var(--primary-color);
   font-weight: bold;
+  z-index: 1000;
 }
 
 .navbar img {

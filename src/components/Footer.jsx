@@ -3,7 +3,7 @@ import '../assets/styles/footer.css';
 import mcLogo from '../assets/images/mindclick-logo.png';
 
 const Footer = () => (
-  <footer>
+  <footer className="footer">
     <img src={mcLogo} alt="logo" />
     <span role="img" aria-label="footer">© 2020 Mind Click. Made with ❤️ from Colombia.</span>
   </footer>

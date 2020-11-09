@@ -18,7 +18,7 @@ const Nav = ({ userLogged, loggedOutUser }) => {
       const show = window.scrollY > 50;
 
       if (navRef.current !== show) {
-        setNavBg(true);
+        setNavBg(!navBg);
       }
     };
     document.addEventListener('scroll', handleScroll);
