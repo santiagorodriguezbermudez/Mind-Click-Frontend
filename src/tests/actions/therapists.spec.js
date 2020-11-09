@@ -19,7 +19,7 @@ describe('Show Therapist Action', () => {
   it('Should update the state of the application to show one therapist', () => {
     expect(showTherapist(therapists[0])).toEqual({
       type: 'SHOW_THERAPIST',
-      stock: therapists[0],
+      therapist: therapists[0],
     });
   });
 });

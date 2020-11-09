@@ -1,4 +1,4 @@
-import application from '../../reducers/application';
+import authentication from '../../reducers/authentication';
 import {
   loggedInUser,
   loggedOutUser,
@@ -7,13 +7,13 @@ import authenticationInitializer from '../../constants/initializers';
 
 describe('Authentication Reducer', () => {
   it('Should return the initializer by default', () => {
-    expect(application(undefined, { type: 'NONE' })).toEqual(authenticationInitializer());
+    expect(authentication(undefined, { type: 'NONE' })).toEqual(authenticationInitializer());
   });
 
-  it('Should update the authentication token on succesful authentication', () => {
+  it('Should update the authentication token on succesfull authentication', () => {
     const token = 'CorrectToken';
     const userId = 100;
-    expect(application(authenticationInitializer(), loggedInUser({ token, id: userId })))
+    expect(authentication(authenticationInitializer(), loggedInUser({ token, id: userId })))
       .toEqual({
         loggedIn: true,
         token,
@@ -22,12 +22,13 @@ describe('Authentication Reducer', () => {
       });
   });
 
-  it('Should update the authentication token on succesful logout', () => {
-    expect(application(authenticationInitializer(), loggedOutUser()))
+  it('Should update the authentication token on succesfull logout', () => {
+    expect(authentication(authenticationInitializer(), loggedOutUser()))
       .toEqual({
         loggedIn: false,
         token: '',
         message: '',
+        id: '',
       });
   });
 });
