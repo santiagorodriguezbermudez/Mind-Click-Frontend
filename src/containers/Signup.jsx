@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import Loading from '../components/Loading';
 import { signupApiCall } from '../actions/api';
 import { validateCurrentToken } from '../helpers/tokenLocalStorage';
@@ -24,49 +24,59 @@ const Signup = ({ application, signupApiCall }) => {
   };
 
   const renderForm = () => (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor={name}>
-        Full name
-        <input
-          type="text"
-          value={name}
-          onChange={e => setName(e.target.value)}
-          required
-          placeholder="Type in your full name"
-        />
-      </label>
-      <label htmlFor={email}>
-        Email
-        <input
-          type="email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-          required
-          placeholder="Type in your email address"
-        />
-      </label>
-      <label htmlFor={password}>
-        Password
-        <input
-          type="password"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-          required
-          placeholder="Create your password"
-        />
-      </label>
-      <label htmlFor={passwordConfirmation}>
-        Confirm Password
-        <input
-          type="password"
-          value={passwordConfirmation}
-          onChange={e => setPasswordConfirmation(e.target.value)}
-          required
-          placeholder="Please confirm your password"
-        />
-      </label>
-      <input type="submit" value="Signup" />
-    </form>
+    <div className="login">
+      <form onSubmit={handleSubmit} className="form">
+        <h1>Sign Up</h1>
+        <label htmlFor={name}>
+          Full name
+          <input
+            type="text"
+            value={name}
+            onChange={e => setName(e.target.value)}
+            required
+            placeholder="Type in your full name"
+            className="form-input"
+          />
+        </label>
+        <label htmlFor={email}>
+          Email
+          <input
+            type="email"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            required
+            placeholder="Type in your email address"
+            className="form-input"
+          />
+        </label>
+        <label htmlFor={password}>
+          Password
+          <input
+            type="password"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            required
+            placeholder="Create your password"
+            className="form-input"
+          />
+        </label>
+        <label htmlFor={passwordConfirmation}>
+          Confirm Password
+          <input
+            type="password"
+            value={passwordConfirmation}
+            onChange={e => setPasswordConfirmation(e.target.value)}
+            required
+            placeholder="Please confirm your password"
+            className="form-input"
+          />
+        </label>
+        <input type="submit" value="Signup" className="submit-form" />
+        <span>
+          <Link to="/login">Login</Link>
+        </span>
+      </form>
+    </div>
   );
 
   if (validateCurrentToken()) {

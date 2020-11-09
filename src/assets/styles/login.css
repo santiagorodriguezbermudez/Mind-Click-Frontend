@@ -19,7 +19,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 4rem 0.1rem;
-  width: 75%;
+  width: 90%;
   text-align: center;
 }
 
@@ -58,4 +58,10 @@
 .form a {
   color: var(--secondary-color);
   font-style: italic;
+}
+
+@media (min-width: 720px) {
+  .form {
+    max-width: 100rem;
+  }
 }
