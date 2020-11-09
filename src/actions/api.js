@@ -3,6 +3,7 @@ import { REACT_APP_API_URL } from '../constants/constants';
 import {
   loggedInUser,
   errorAuth,
+  errorFetchingTherapists,
 } from './authentication';
 import updateState from './application';
 import { getCurrentToken } from '../helpers/tokenLocalStorage';
@@ -25,7 +26,11 @@ export const signupApiCall = user => (
         'Content-Type': 'application/json',
       },
     }).then(response => {
-      dispatch(loggedInUser(response.data.auth_token));
+      const dataAuth = {
+        token: response.data.auth_token,
+        id: response.data.id,
+      };
+      dispatch(loggedInUser(dataAuth));
       dispatch(updateState('IDLE'));
     }).catch(e => {
       dispatch(updateState('IDLE'));
@@ -49,11 +54,14 @@ export const loginApiCall = user => (
         'Content-Type': 'application/json',
       },
     }).then(response => {
+      const dataAuth = {
+        token: response.data.auth_token,
+        id: response.data.id,
+      };
+      dispatch(loggedInUser(dataAuth));
       dispatch(updateState('IDLE'));
-      dispatch(loggedInUser(response.data.auth_token));
     }).catch(e => {
       dispatch(updateState('IDLE'));
-      console.log(e.response);
       dispatch(errorAuth(e.response.data.message));
     });
   }
@@ -74,8 +82,9 @@ export const fetchTherapistsAPI = () => (
     }).then(response => {
       dispatch(updateState('IDLE'));
       dispatch(fetchTherapists(response.data.data.therapists));
-    }).catch(() => {
+    }).catch(error => {
       dispatch(updateState('IDLE'));
+      dispatch(errorFetchingTherapists(error.response.data.message));
       dispatch(fetchTherapists([]));
     });
   }
@@ -96,8 +105,9 @@ export const fetchTherapistAPI = id => (
     }).then(response => {
       dispatch(updateState('IDLE'));
       dispatch(showTherapist(response.data.data.therapist));
-    }).catch(() => {
+    }).catch(error => {
       dispatch(updateState('IDLE'));
+      dispatch(errorFetchingTherapists(error.response.data.message));
       dispatch(showTherapist({}));
     });
   }
@@ -118,8 +128,9 @@ export const fetchFavoriteTherapistsAPI = id => (
     }).then(response => {
       dispatch(updateState('IDLE'));
       dispatch(fetchTherapists(response.data.data.therapists));
-    }).catch(() => {
+    }).catch(error => {
       dispatch(updateState('IDLE'));
+      dispatch(errorFetchingTherapists(error.response.data.message));
       dispatch(fetchTherapists([]));
     });
   }
@@ -140,8 +151,9 @@ export const addFavoriteAPI = (userId, therapistId) => (
         user_id: userId,
         therapist_id: therapistId,
       },
-    }).then(() => {
+    }).then(error => {
       dispatch(updateState('IDLE'));
+      dispatch(errorFetchingTherapists(error.response.data.message));
       dispatch(fetchFavoriteTherapistsAPI(userId));
     });
   }

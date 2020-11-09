@@ -20,7 +20,7 @@ const Therapist = ({
 
   const renderAddButton = () => (
     <button
-      onClick={handleAddFavorite()}
+      onClick={handleAddFavorite}
       className="material-icons"
       type="button"
     >
@@ -30,7 +30,7 @@ const Therapist = ({
 
   const renderRemoveButton = () => (
     <button
-      onClick={handleRemoveFavorite()}
+      onClick={handleRemoveFavorite}
       className="material-icons"
       type="button"
     >
@@ -42,7 +42,7 @@ const Therapist = ({
     <div>
       <div>
         <img
-          src={therapist.image}
+          src={therapist.therapy_description}
           alt="therapist"
           onError={e => {
             e.target.onerror = null;

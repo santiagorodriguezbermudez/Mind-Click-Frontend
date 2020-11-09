@@ -31,9 +31,17 @@ const TherapistList = ({
     />
   ));
 
+  const renderError = () => (
+    `Error: ${authentication.message}. Please try again.`
+  );
+
+  const renderLogin = () => (
+    <Redirect to="/login" />
+  );
+
   React.useEffect(() => {
     if (!validateCurrentToken()) {
-      return <Redirect to="/login" />;
+      return renderLogin();
     }
     return getTherapists();
   }, []);
@@ -42,17 +50,29 @@ const TherapistList = ({
     getFavorites(authentication.id);
   };
 
-  return (
+  const renderComponent = () => (
     <div>
-      <button
-        type="button"
-        onClick={handleFavoriteClick()}
-      >
-        View Favorites
-      </button>
+      <h1 className="header-therapists">Therapists</h1>
+      {authentication.message !== '' ? <p className="errorAuth">{renderError()}</p> : null}
       <div className="therapist-container">
         {application === 'LOADING' ? <Loading /> : renderTherapists()}
       </div>
+      <button
+        type="button"
+        onClick={handleFavoriteClick}
+      >
+        <span className="material-icons">
+          favorite
+        </span>
+        {'  '}
+        View Favorites
+      </button>
+    </div>
+  );
+
+  return (
+    <div>
+      { validateCurrentToken() ? renderComponent() : renderLogin() }
     </div>
   );
 };

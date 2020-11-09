@@ -17,7 +17,6 @@ describe('Autentication State', () => {
   it('Should update the state of the authentication when user logs out', () => {
     expect(loggedOutUser()).toEqual({
       type: 'LOGGED_OUT_USER',
-      token: '',
     });
   });
 });

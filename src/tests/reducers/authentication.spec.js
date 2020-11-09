@@ -3,6 +3,7 @@ import {
   loggedInUser,
   loggedOutUser,
   errorAuth,
+  errorFetchingTherapists,
 } from '../../actions/authentication';
 import authenticationInitializer from '../../constants/initializers';
 
@@ -36,6 +37,17 @@ describe('Authentication Reducer', () => {
   it('Should update the authentication token on error from login', () => {
     const error = 'Error on Log in';
     expect(authentication(authenticationInitializer(), errorAuth(error)))
+      .toEqual({
+        loggedIn: false,
+        token: '',
+        message: error,
+        id: '',
+      });
+  });
+
+  it('Should update the authentication token on error from fetching therapists', () => {
+    const error = 'Unable to fetch therapists';
+    expect(authentication(authenticationInitializer(), errorFetchingTherapists(error)))
       .toEqual({
         loggedIn: false,
         token: '',

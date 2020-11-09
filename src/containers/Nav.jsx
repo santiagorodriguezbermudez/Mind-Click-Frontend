@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import mcLogo from '../assets/images/mindclick-logo.png';
@@ -29,6 +29,7 @@ const Nav = ({ userLogged, loggedOutUser }) => {
 
   const handleLogout = () => {
     loggedOutUser();
+    return <Redirect to="/login" />;
   };
 
   const renderLogin = () => (

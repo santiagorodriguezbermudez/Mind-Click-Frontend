@@ -5,7 +5,6 @@ export const removeCurrentToken = () => {
 export const validateCurrentToken = () => {
   const currentDate = Date.now();
   const savedToken = JSON.parse(localStorage.getItem('authToken'));
-
   let isValid;
   if (!savedToken) {
     isValid = false;
@@ -15,7 +14,6 @@ export const validateCurrentToken = () => {
   } else {
     isValid = true;
   }
-
   return isValid;
 };
 

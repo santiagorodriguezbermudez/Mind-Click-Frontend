@@ -27,6 +27,11 @@ const authentication = (state = authenticationInitializer(), action) => {
         token: '',
         message: action.errorMessage,
       };
+    case 'ERROR_FETCHING_THERAPISTS':
+      return {
+        ...state,
+        message: action.errorMessage,
+      };
     default:
       return state;
   }
