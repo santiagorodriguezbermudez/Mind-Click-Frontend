@@ -4,6 +4,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a lo
 import { Carousel } from 'react-responsive-carousel';
 import { Link } from 'react-router-dom';
 import '../assets/styles/landing.css';
+import processImg from '../assets/images/VP.svg';
 
 const Landing = () => {
   const arrayText = ['a Coach.', 'a Psychiatrist.', 'a psychologist.', 'mental health.', 'happiness.'];
@@ -21,8 +22,24 @@ const Landing = () => {
         </p>
         <Link to="/signup" className="hero-cta">Signup</Link>
       </main>
-      <div>
-        Value Proposition
+      <div className="process">
+        <div className="step-by-step">
+          <div>
+            <span className="material-icons">login</span>
+            <p>Signup to our directory.</p>
+          </div>
+          <div>
+            <span className="material-icons">search</span>
+            <p>Search for your perfect therapist.</p>
+          </div>
+          <div>
+            <span className="material-icons">calendar_today</span>
+            <p>Book a therapist session.</p>
+          </div>
+        </div>
+        <div className="process-img">
+          <img src={processImg} alt="process" />
+        </div>
       </div>
       <section>
         <Carousel

@@ -25,6 +25,7 @@
   padding: 0.5rem;
   border-radius: 0.1rem;
 }
+
 .hero-cta {
   border-radius: 1rem;
   background-color: var(--secondary-color);
@@ -34,3 +35,48 @@
   color: var(--primary-color);
 }
 
+.process {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  width: 100%;
+  padding: 1rem;
+}
+
+.step-by-step {
+  margin: 1rem 0;
+}
+
+.step-by-step div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-by-step p {
+  display: inline-block;
+  margin: 1rem 0 1rem 1rem;
+  text-align: center;
+  padding: 0;
+  color: var(--font-color);
+}
+
+.process-img {
+  padding-right: 1rem;
+}
+
+@media (min-width: 720px) {
+  .process {
+    flex-direction: row;
+  }
+
+  .step-by-step div {
+    justify-content: flex-start;
+  }
+  
+  .step-by-step p {
+    text-align: justify;
+  }
+}
