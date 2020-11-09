@@ -14,7 +14,7 @@ import TherapistDetail from '../containers/TherapistDetail';
 
 const App = () => (
   <Router>
-    <div>
+    <div className="relative">
       <Switch>
         <Route exact path="/">
           <Nav />

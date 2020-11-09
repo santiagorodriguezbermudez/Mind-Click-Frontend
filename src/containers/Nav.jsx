@@ -4,21 +4,42 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import mcLogo from '../assets/images/mindclick-logo.png';
 import { loggedOutUser } from '../actions/authentication';
+import '../assets/styles/navbar.css';
 
 const Nav = ({ userLogged, loggedOutUser }) => {
+  // Create the effect of changing the navbar upon scroll
+  const [navBg, setNavBg] = React.useState(false);
+
+  const navRef = React.useRef();
+  navRef.current = navBg;
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      const show = window.scrollY > 50;
+
+      if (navRef.current !== show) {
+        setNavBg(true);
+      }
+    };
+    document.addEventListener('scroll', handleScroll);
+    return () => {
+      document.removeEventListener('scroll', handleScroll);
+    };
+  });
+
   const handleLogout = () => {
     loggedOutUser();
   };
 
   const renderLogin = () => (
-    <div>
+    <div className="hero-links">
       <Link to="/login">Login</Link>
       <Link to="/signup">Signup</Link>
     </div>
   );
 
   const renderLogout = () => (
-    <div>
+    <div className="hero-links">
       <button
         onClick={() => handleLogout()}
         type="button"
@@ -29,7 +50,10 @@ const Nav = ({ userLogged, loggedOutUser }) => {
   );
 
   return (
-    <nav>
+    <nav
+      className={navBg ? 'navbar active sticky top-0' : 'navbar no-active sticky top-0'}
+      style={{ transition: '1s ease' }}
+    >
       <img src={mcLogo} alt="logo" />
       {userLogged ? renderLogout() : renderLogin() }
     </nav>

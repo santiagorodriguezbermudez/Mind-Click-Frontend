@@ -1,0 +1,9 @@
+.hero {
+  background-image: linear-gradient(to bottom, transparent 1%, #e5e5e5e5 50%, transparent 100%), url("../images/Hero-img.jpg");
+  background-position: center;
+  background-size: cover;
+  min-height: 18rem;
+  padding: 8rem 1rem 3rem;
+  text-align: center;
+  color: var(--hero-txt-color);
+}

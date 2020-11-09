@@ -1,10 +1,6 @@
 import axios from 'axios';
 import { REACT_APP_API_URL } from '../constants/constants';
-import {
-  loggedInUser,
-  signUpError,
-  loginError,
-} from './authentication';
+import { loggedInUser } from './authentication';
 import updateState from './application';
 import { getCurrentToken } from '../helpers/tokenLocalStorage';
 import { fetchTherapists, showTherapist } from './therapists';
@@ -29,8 +25,7 @@ export const signupApiCall = user => (
       dispatch(loggedInUser(response.data.auth_token));
       dispatch(updateState('IDLE'));
     }).catch(e => {
-      dispatch(signUpError(e.response.data.message));
-      dispatch(updateState('IDLE'));
+      dispatch(updateState(e.response.messages));
     });
   }
 );
@@ -53,8 +48,7 @@ export const loginApiCall = user => (
       dispatch(updateState('IDLE'));
       dispatch(loggedInUser(response.data.auth_token));
     }).catch(e => {
-      dispatch(updateState('IDLE'));
-      dispatch(loginError(e.response.data.message));
+      dispatch(updateState(e.response.messages));
     });
   }
 );

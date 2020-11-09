@@ -5,8 +5,8 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import App from './components/App';
 import combinedReducers from './reducers/index';
-import './index.css';
-import './reset.css';
+import './assets/styles/index.css';
+import './assets/styles/reset.css';
 
 require('dotenv').config();
 

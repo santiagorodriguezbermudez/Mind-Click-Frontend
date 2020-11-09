@@ -1,0 +1,14 @@
+/* ----------------------------------------Document style variables---------------------------------------------------------------- */
+:root {
+  --primary-color: white;
+  --secondary-color: #ED590E;
+  --complement-color: #E7F0FF;
+  --hover-button-color: rgb(218, 82, 14);
+  --background-link: rgb(116, 118, 119, 0.3);
+}
+
+#root {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  background-color: var(--primary-color);
+}

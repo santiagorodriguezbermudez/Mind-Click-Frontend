@@ -2,13 +2,14 @@ import React from 'react';
 import ReactRotatingText from 'react-rotating-text';
 import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
+import '../assets/styles/landing.css';
 
 const Landing = () => {
   const arrayText = ['a Psiquiatris', 'your coach', 'therapist', 'psychologist'];
 
   return (
     <div>
-      <main>
+      <main className="hero">
         <h1 className="main-title">
           Find your
           {' '}
