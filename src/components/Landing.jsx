@@ -56,8 +56,12 @@ const Landing = () => {
           </div>
         </Carousel>
       </section>
-      <div>
-        Call to Action
+      <div className="phrase-section">
+        <div className="quote">
+          <h2>‘We should lock the door and scream that curse word we know. It’s a good one!’</h2>
+          <h3>ANGER (Inside Out)</h3>
+        </div>
+        <Link to="/signup" className="hero-cta">Signup</Link>
       </div>
     </div>
   );

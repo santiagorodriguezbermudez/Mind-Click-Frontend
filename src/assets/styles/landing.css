@@ -67,6 +67,35 @@
   padding-right: 1rem;
 }
 
+.phrase-section {
+  background-image: linear-gradient(to bottom, transparent 1%, #000 100%), url("../images/Quote-img.jpg");
+  background-position: bottom;
+  background-size: cover;
+  min-height: 25rem;
+  padding: 5rem 1rem 3rem;
+  text-align: center;
+}
+
+.phrase-section h2 {
+  font-size: 2rem;
+  font-style: italic;
+  color: var(--primary-color);
+}
+
+.phrase-section h3 {
+  font-size: 1.2rem;
+  margin: 1rem 0;
+  color: var(--primary-color);
+}
+
+.quote {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
 @media (min-width: 720px) {
   .process {
     flex-direction: row;
