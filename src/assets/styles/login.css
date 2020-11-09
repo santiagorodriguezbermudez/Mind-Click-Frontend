@@ -60,6 +60,15 @@
   font-style: italic;
 }
 
+.errorAuth {
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 1px var(--secondary-color) solid;
+  transition: 5s ease;
+  color: var(--font-color);
+  font-weight: bold;
+}
+
 @media (min-width: 720px) {
   .form {
     max-width: 100rem;

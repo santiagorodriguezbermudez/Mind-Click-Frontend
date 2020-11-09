@@ -6,7 +6,7 @@ import Loading from '../components/Loading';
 import { signupApiCall } from '../actions/api';
 import { validateCurrentToken } from '../helpers/tokenLocalStorage';
 
-const Signup = ({ application, signupApiCall }) => {
+const Signup = ({ application, signupApiCall, authenticationMessage }) => {
   const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -22,6 +22,10 @@ const Signup = ({ application, signupApiCall }) => {
     };
     signupApiCall(user);
   };
+
+  const renderError = () => (
+    `Error: ${authenticationMessage}. Please try again.`
+  );
 
   const renderForm = () => (
     <div className="login">
@@ -71,6 +75,7 @@ const Signup = ({ application, signupApiCall }) => {
             className="form-input"
           />
         </label>
+        {authenticationMessage !== '' ? <p className="errorAuth">{renderError()}</p> : null}
         <input type="submit" value="Signup" className="submit-form" />
         <span>
           <Link to="/login">Login</Link>
@@ -95,11 +100,13 @@ const Signup = ({ application, signupApiCall }) => {
 Signup.propTypes = {
   application: PropTypes.string.isRequired,
   signupApiCall: PropTypes.func.isRequired,
+  authenticationMessage: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = state => ({
   authenticationToken: state.authentication.token,
   application: state.application,
+  authenticationMessage: state.authentication.message,
 });
 
 const mapDispatchToProps = dispatch => ({

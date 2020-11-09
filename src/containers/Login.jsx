@@ -20,6 +20,10 @@ const Login = ({ application, loginApiCall, authenticationMessage }) => {
     loginApiCall(user);
   };
 
+  const renderError = () => (
+    `Error: ${authenticationMessage}. Please try again.`
+  );
+
   const renderForm = () => (
     <div className="login">
       <form onSubmit={handleSubmit} className="form">
@@ -50,6 +54,7 @@ const Login = ({ application, loginApiCall, authenticationMessage }) => {
         <span>
           <Link to="/signup">Create an Account</Link>
         </span>
+        {authenticationMessage !== '' ? <p className="errorAuth">{renderError()}</p> : null}
       </form>
     </div>
   );
@@ -60,14 +65,9 @@ const Login = ({ application, loginApiCall, authenticationMessage }) => {
     );
   }
 
-  const renderError = () => (
-    `Login Failed. Error: ${authenticationMessage}. Please try again`
-  );
-
   return (
     <div>
       {application === 'LOADING' ? <Loading /> : renderForm()}
-      {authenticationMessage !== '' ? <p>{renderError()}</p> : null}
     </div>
   );
 };

@@ -2,6 +2,7 @@ import authentication from '../../reducers/authentication';
 import {
   loggedInUser,
   loggedOutUser,
+  errorAuth,
 } from '../../actions/authentication';
 import authenticationInitializer from '../../constants/initializers';
 
@@ -28,6 +29,17 @@ describe('Authentication Reducer', () => {
         loggedIn: false,
         token: '',
         message: '',
+        id: '',
+      });
+  });
+
+  it('Should update the authentication token on error from login', () => {
+    const error = 'Error on Log in';
+    expect(authentication(authenticationInitializer(), errorAuth(error)))
+      .toEqual({
+        loggedIn: false,
+        token: '',
+        message: error,
         id: '',
       });
   });

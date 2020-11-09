@@ -8,3 +8,8 @@ export const loggedOutUser = () => ({
   type: 'LOGGED_OUT_USER',
   token: '',
 });
+
+export const errorAuth = error => ({
+  type: 'ERROR_ON_AUTH',
+  errorMessage: error,
+});

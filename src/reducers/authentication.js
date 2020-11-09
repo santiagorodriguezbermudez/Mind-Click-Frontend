@@ -20,14 +20,7 @@ const authentication = (state = authenticationInitializer(), action) => {
         token: '',
         message: '',
       };
-    case 'ERROR_ON_LOGIN':
-      return {
-        ...state,
-        loggedIn: false,
-        token: '',
-        message: action.errorMessage,
-      };
-    case 'ERROR_ON_SIGNUP':
+    case 'ERROR_ON_AUTH':
       return {
         ...state,
         loggedIn: false,
