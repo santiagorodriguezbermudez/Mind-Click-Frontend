@@ -91,7 +91,7 @@ const Signup = ({ application, signupApiCall, authenticationMessage }) => {
   }
 
   return (
-    <div>
+    <div className="loading">
       {application === 'LOADING' ? <Loading /> : renderForm()}
     </div>
   );

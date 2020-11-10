@@ -1,23 +1,29 @@
-import { validateCurrentToken, getCurrentToken } from '../helpers/tokenLocalStorage';
+import { validateCurrentToken, getCurrentToken, getUserId } from '../helpers/tokenLocalStorage';
 
-const authenticationInitializer = () => {
+export const authenticationInitializer = () => {
   let loggedIn;
   let token;
+  let id;
 
   if (validateCurrentToken()) {
     loggedIn = true;
     token = getCurrentToken();
+    id = getUserId();
   } else {
     loggedIn = false;
     token = '';
+    id = '';
   }
 
   return ({
     loggedIn,
     token,
     message: '',
-    id: '',
+    id,
   });
 };
 
-export default authenticationInitializer;
+export const therapistsInitializer = {
+  list: [],
+  isFavorite: false,
+};

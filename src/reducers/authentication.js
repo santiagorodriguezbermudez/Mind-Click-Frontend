@@ -1,10 +1,14 @@
 import { saveCurrentToken, removeCurrentToken } from '../helpers/tokenLocalStorage';
-import authenticationInitializer from '../constants/initializers';
+import { authenticationInitializer } from '../constants/initializers';
 
 const authentication = (state = authenticationInitializer(), action) => {
+  const authObj = {
+    token: action.token,
+    id: action.id,
+  };
   switch (action.type) {
     case 'LOGGED_IN_USER':
-      saveCurrentToken(action.token);
+      saveCurrentToken(authObj);
       return {
         ...state,
         loggedIn: true,
@@ -19,6 +23,7 @@ const authentication = (state = authenticationInitializer(), action) => {
         loggedIn: false,
         token: '',
         message: '',
+        id: '',
       };
     case 'ERROR_ON_AUTH':
       return {

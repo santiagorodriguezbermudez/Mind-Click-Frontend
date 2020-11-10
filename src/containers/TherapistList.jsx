@@ -22,7 +22,7 @@ const TherapistList = ({
   addFavoriteTherapist,
   removeFavoriteTherapist,
 }) => {
-  const renderTherapists = () => therapistList.map(therapist => (
+  const renderTherapists = () => therapistList.list.map(therapist => (
     <Therapist
       key={therapist.id}
       therapist={therapist}
@@ -51,22 +51,39 @@ const TherapistList = ({
     getFavorites(authentication.id);
   };
 
+  const handleAllClick = () => {
+    getTherapists();
+  };
+
+  const renderViewFavoritesButton = () => (
+    <button
+      type="button"
+      onClick={() => handleFavoriteClick()}
+      className="favorite-button"
+    >
+      <span className="material-icons">
+        favorite
+      </span>
+      <span>
+        View Favorites
+      </span>
+    </button>
+  );
+
+  const renderAllTherapistButton = () => (
+    <button
+      type="button"
+      onClick={() => handleAllClick()}
+      className="favorite-button"
+    >
+      View All Therapists
+    </button>
+  );
+
   const renderComponent = () => (
     <div className="therapists">
       <h1 className="header-therapists">Therapists</h1>
-      <button
-        type="button"
-        onClick={handleFavoriteClick}
-        className="favorite-button"
-      >
-        <span className="material-icons">
-          favorite
-        </span>
-        {'  '}
-        <span>
-          View Favorites
-        </span>
-      </button>
+      {therapistList.isFavorite ? renderAllTherapistButton() : renderViewFavoritesButton() }
       {authentication.message !== '' ? <p className="errorAuth">{renderError()}</p> : null}
       <div className="scroll-container">
         <div className="therapist-container">

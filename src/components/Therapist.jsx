@@ -33,7 +33,6 @@ const Therapist = ({
   const renderRemoveButton = () => (
     <button
       onClick={handleRemoveFavorite}
-      className="material-icons"
       type="button"
     >
       Remove as Favorite

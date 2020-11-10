@@ -1,3 +1,7 @@
+.loading {
+  min-height: 30rem;
+}
+
 .login {
   background-image: url('../images/Background-logo.jpg'), radial-gradient(white, transparent);
   background-size: cover;

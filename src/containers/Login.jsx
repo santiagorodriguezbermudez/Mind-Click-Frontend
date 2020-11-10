@@ -66,7 +66,7 @@ const Login = ({ application, loginApiCall, authenticationMessage }) => {
   }
 
   return (
-    <div>
+    <div className="loading">
       {application === 'LOADING' ? <Loading /> : renderForm()}
     </div>
   );

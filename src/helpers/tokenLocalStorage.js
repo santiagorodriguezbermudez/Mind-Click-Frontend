@@ -17,13 +17,21 @@ export const validateCurrentToken = () => {
   return isValid;
 };
 
-export const saveCurrentToken = token => {
+export const saveCurrentToken = ({ token, id }) => {
+  console.log('Here is where we sabe the otken');
+  console.log(token);
+  console.log(id);
   localStorage.setItem('authToken', JSON.stringify({
     token,
     expirationDate: Date.now() + 86400000,
+    id,
   }));
 };
 
 export const getCurrentToken = () => (
   JSON.parse(localStorage.getItem('authToken')).token
+);
+
+export const getUserId = () => (
+  JSON.parse(localStorage.getItem('authToken')).id
 );

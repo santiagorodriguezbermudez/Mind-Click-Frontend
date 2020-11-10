@@ -7,7 +7,7 @@ import {
 } from './authentication';
 import updateState from './application';
 import { getCurrentToken } from '../helpers/tokenLocalStorage';
-import { fetchTherapists, showTherapist } from './therapists';
+import { fetchTherapists, showTherapist, fetchFavoriteTherapists } from './therapists';
 
 export const signupApiCall = user => (
   dispatch => {
@@ -127,7 +127,7 @@ export const fetchFavoriteTherapistsAPI = id => (
       },
     }).then(response => {
       dispatch(updateState('IDLE'));
-      dispatch(fetchTherapists(response.data.data.therapists));
+      dispatch(fetchFavoriteTherapists(response.data.data.therapists));
     }).catch(error => {
       dispatch(updateState('IDLE'));
       dispatch(errorFetchingTherapists(error.response.data.message));
@@ -151,7 +151,9 @@ export const addFavoriteAPI = (userId, therapistId) => (
         user_id: userId,
         therapist_id: therapistId,
       },
-    }).then(error => {
+    }).then(() => {
+      dispatch(updateState('IDLE'));
+    }).catch(error => {
       dispatch(updateState('IDLE'));
       dispatch(errorFetchingTherapists(error.response.data.message));
       dispatch(fetchFavoriteTherapistsAPI(userId));
