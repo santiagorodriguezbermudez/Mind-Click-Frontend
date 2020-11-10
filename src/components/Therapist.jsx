@@ -21,10 +21,12 @@ const Therapist = ({
   const renderAddButton = () => (
     <button
       onClick={handleAddFavorite}
-      className="material-icons"
       type="button"
     >
-      favorite
+      <span className="material-icons">
+        favorite
+      </span>
+      Add as Favorite
     </button>
   );
 
@@ -39,8 +41,8 @@ const Therapist = ({
   );
 
   return (
-    <div>
-      <div>
+    <div className="therapist-index-profile">
+      <div className="therapist-index-profile-image">
         <img
           src={therapist.therapy_description}
           alt="therapist"
@@ -49,14 +51,14 @@ const Therapist = ({
             e.target.src = errorImage;
           }}
         />
-        <span className="absolute bottom-0 right-0">
+        <span>
           Price:
           {` ${formatter.format(therapist.fee)}`}
+          / per session
         </span>
       </div>
-      <div>
-        <p className="text-2xl">
-          Name:
+      <div className="therapist-index-profile-description">
+        <p className="therapist-name">
           {therapist.full_name}
         </p>
         <p className="text-xl">
@@ -65,10 +67,10 @@ const Therapist = ({
         </p>
         <p>
           Description:
-          {therapist.description.substr(0, 100)}
+          {therapist.description.length > 100 ? `${therapist.description.substr(0, 100)}...` : therapist.description}
         </p>
-        {therapist.favorite_id ? renderRemoveButton() : renderAddButton() }
         <Link to={`/therapists/${therapist.id}`}>More Information</Link>
+        {therapist.favorite_id ? renderRemoveButton() : renderAddButton() }
       </div>
     </div>
   );
@@ -84,7 +86,7 @@ const therapistItemShape = {
 
 Therapist.propTypes = {
   therapist: PropTypes.shape(therapistItemShape).isRequired,
-  userId: PropTypes.number.isRequired,
+  userId: PropTypes.string.isRequired,
   addFavoriteTherapist: PropTypes.func.isRequired,
   removeFavoriteTherapist: PropTypes.func.isRequired,
 };

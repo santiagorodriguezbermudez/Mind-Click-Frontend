@@ -11,6 +11,7 @@ import {
 } from '../actions/api';
 import Loading from '../components/Loading';
 import { validateCurrentToken } from '../helpers/tokenLocalStorage';
+import '../assets/styles/therapists.css';
 
 const TherapistList = ({
   therapistList,
@@ -51,22 +52,27 @@ const TherapistList = ({
   };
 
   const renderComponent = () => (
-    <div>
+    <div className="therapists">
       <h1 className="header-therapists">Therapists</h1>
-      {authentication.message !== '' ? <p className="errorAuth">{renderError()}</p> : null}
-      <div className="therapist-container">
-        {application === 'LOADING' ? <Loading /> : renderTherapists()}
-      </div>
       <button
         type="button"
         onClick={handleFavoriteClick}
+        className="favorite-button"
       >
         <span className="material-icons">
           favorite
         </span>
         {'  '}
-        View Favorites
+        <span>
+          View Favorites
+        </span>
       </button>
+      {authentication.message !== '' ? <p className="errorAuth">{renderError()}</p> : null}
+      <div className="scroll-container">
+        <div className="therapist-container">
+          {application === 'LOADING' ? <Loading /> : renderTherapists()}
+        </div>
+      </div>
     </div>
   );
 
@@ -77,12 +83,17 @@ const TherapistList = ({
   );
 };
 
+const authenticationItemShape = {
+  token: PropTypes.string,
+  id: PropTypes.string,
+};
+
 TherapistList.propTypes = {
   therapistList: PropTypes.arrayOf(PropTypes.object).isRequired,
   getTherapists: PropTypes.func.isRequired,
   getFavorites: PropTypes.func.isRequired,
   application: PropTypes.string.isRequired,
-  authentication: PropTypes.objectOf(PropTypes.string).isRequired,
+  authentication: PropTypes.shape(authenticationItemShape).isRequired,
   addFavoriteTherapist: PropTypes.func.isRequired,
   removeFavoriteTherapist: PropTypes.func.isRequired,
 };
