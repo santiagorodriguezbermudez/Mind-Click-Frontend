@@ -55,7 +55,9 @@ const Nav = ({ userLogged, loggedOutUser }) => {
       className={navBg ? 'navbar active sticky top-0' : 'navbar no-active sticky top-0'}
       style={{ transition: '1s ease' }}
     >
-      <img src={mcLogo} alt="logo" />
+      <Link to="/therapists">
+        <img src={mcLogo} alt="logo" />
+      </Link>
       {userLogged ? renderLogout() : renderLogin() }
     </nav>
   );
