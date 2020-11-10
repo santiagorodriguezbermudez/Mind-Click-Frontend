@@ -85,7 +85,7 @@ const therapistItemShape = {
 
 Therapist.propTypes = {
   therapist: PropTypes.shape(therapistItemShape).isRequired,
-  userId: PropTypes.string.isRequired,
+  userId: PropTypes.number.isRequired,
   addFavoriteTherapist: PropTypes.func.isRequired,
   removeFavoriteTherapist: PropTypes.func.isRequired,
 };

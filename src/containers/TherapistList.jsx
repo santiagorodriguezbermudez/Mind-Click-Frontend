@@ -102,11 +102,16 @@ const TherapistList = ({
 
 const authenticationItemShape = {
   token: PropTypes.string,
-  id: PropTypes.string,
+  id: PropTypes.number,
+};
+
+const therapistListItemShape = {
+  list: PropTypes.array,
+  isFavorite: PropTypes.bool,
 };
 
 TherapistList.propTypes = {
-  therapistList: PropTypes.arrayOf(PropTypes.object).isRequired,
+  therapistList: PropTypes.shape(therapistListItemShape).isRequired,
   getTherapists: PropTypes.func.isRequired,
   getFavorites: PropTypes.func.isRequired,
   application: PropTypes.string.isRequired,

@@ -12,10 +12,6 @@ require('dotenv').config();
 
 const store = createStore(combinedReducers, applyMiddleware(thunk));
 
-store.subscribe(() => {
-  console.log('state updated', store.getState());
-});
-
 ReactDOM.render(
   <Provider store={store}>
     <App />

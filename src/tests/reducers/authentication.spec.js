@@ -5,11 +5,11 @@ import {
   errorAuth,
   errorFetchingTherapists,
 } from '../../actions/authentication';
-import authenticationInitializer from '../../constants/initializers';
+import { authenticationInitializer } from '../../constants/initializers';
 
 describe('Authentication Reducer', () => {
   it('Should return the initializer by default', () => {
-    expect(authentication(undefined, { type: 'NONE' })).toEqual(authenticationInitializer());
+    expect(authentication(authenticationInitializer(), { type: 'NONE' })).toEqual(authenticationInitializer());
   });
 
   it('Should update the authentication token on succesfull authentication', () => {
@@ -30,7 +30,7 @@ describe('Authentication Reducer', () => {
         loggedIn: false,
         token: '',
         message: '',
-        id: '',
+        id: 0,
       });
   });
 
@@ -41,7 +41,7 @@ describe('Authentication Reducer', () => {
         loggedIn: false,
         token: '',
         message: error,
-        id: '',
+        id: 0,
       });
   });
 
@@ -52,7 +52,7 @@ describe('Authentication Reducer', () => {
         loggedIn: false,
         token: '',
         message: error,
-        id: '',
+        id: 0,
       });
   });
 });

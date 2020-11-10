@@ -12,7 +12,7 @@ export const authenticationInitializer = () => {
   } else {
     loggedIn = false;
     token = '';
-    id = '';
+    id = 0;
   }
 
   return ({

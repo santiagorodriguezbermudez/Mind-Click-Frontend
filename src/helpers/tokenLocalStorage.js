@@ -18,9 +18,6 @@ export const validateCurrentToken = () => {
 };
 
 export const saveCurrentToken = ({ token, id }) => {
-  console.log('Here is where we sabe the otken');
-  console.log(token);
-  console.log(id);
   localStorage.setItem('authToken', JSON.stringify({
     token,
     expirationDate: Date.now() + 86400000,

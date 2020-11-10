@@ -23,7 +23,7 @@ const authentication = (state = authenticationInitializer(), action) => {
         loggedIn: false,
         token: '',
         message: '',
-        id: '',
+        id: 0,
       };
     case 'ERROR_ON_AUTH':
       return {
