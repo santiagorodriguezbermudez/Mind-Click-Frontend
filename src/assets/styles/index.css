@@ -1,11 +1,11 @@
 /* ----------------------------------------Document style variables---------------------------------------------------------------- */
 :root {
   --primary-color: white;
-  --secondary-color: #ED590E;
-  --complement-color: #E7F0FF;
+  --secondary-color: #ed590e;
+  --complement-color: #e7f0ff;
   --hover-button-color: rgb(218, 82, 14);
   --background-link: rgb(116, 118, 119, 0.3);
-  --font-color: #B5B5B5;
+  --font-color: #b5b5b5;
 }
 
 #root {
