@@ -3,7 +3,7 @@ import { fetchTherapists, fetchFavoriteTherapists } from '../../actions/therapis
 import { therapistsInitializer } from '../../constants/initializers';
 
 const mockTherapists = {
-  list: [
+  userList: [
     {
       full_name: 'Test Therapist 1',
       id: 1,
@@ -23,7 +23,7 @@ const mockTherapists = {
 };
 
 const mockFavoriteTherapists = {
-  list: [
+  favoriteList: [
     {
       full_name: 'Test Therapist 1',
       id: 1,
@@ -48,10 +48,10 @@ describe('Therapists Reducer', () => {
   });
 
   it('Should update the therapists state when receiving the action', () => {
-    expect(therapists('', fetchTherapists(mockTherapists.list))).toEqual(mockTherapists);
+    expect(therapists('', fetchTherapists(mockTherapists.userList))).toEqual(mockTherapists);
   });
 
   it('Should update the favorite therapists state when receiving the action', () => {
-    expect(therapists('', fetchFavoriteTherapists(mockFavoriteTherapists.list))).toEqual(mockFavoriteTherapists);
+    expect(therapists('', fetchFavoriteTherapists(mockFavoriteTherapists.favoriteList))).toEqual(mockFavoriteTherapists);
   });
 });
