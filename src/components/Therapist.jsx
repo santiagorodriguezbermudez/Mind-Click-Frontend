@@ -9,7 +9,9 @@ const Therapist = ({
   userId,
   addFavoriteTherapist,
   removeFavoriteTherapist,
+  isAlreadyFavorite,
 }) => {
+  console.log('Rendering this therapist component');
   const handleAddFavorite = () => {
     addFavoriteTherapist(userId, therapist.id);
   };
@@ -18,17 +20,27 @@ const Therapist = ({
     removeFavoriteTherapist(userId, therapist.favorite_id);
   };
 
-  const renderAddButton = () => (
-    <button
-      onClick={handleAddFavorite}
-      type="button"
-    >
-      <span className="material-icons">
-        favorite
-      </span>
-      Add as Favorite
-    </button>
-  );
+  const renderAddButton = () => {
+    let render;
+
+    if (isAlreadyFavorite) {
+      render = null;
+    } else {
+      render = (
+        <button
+          onClick={handleAddFavorite}
+          type="button"
+        >
+          <span className="material-icons">
+            favorite
+          </span>
+          Add as Favorite
+        </button>
+      );
+    }
+
+    return render;
+  };
 
   const renderRemoveButton = () => (
     <button
@@ -88,6 +100,7 @@ Therapist.propTypes = {
   userId: PropTypes.number.isRequired,
   addFavoriteTherapist: PropTypes.func.isRequired,
   removeFavoriteTherapist: PropTypes.func.isRequired,
+  isAlreadyFavorite: PropTypes.bool.isRequired,
 };
 
 export default Therapist;

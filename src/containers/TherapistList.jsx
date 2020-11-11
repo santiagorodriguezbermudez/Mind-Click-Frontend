@@ -14,7 +14,7 @@ import { validateCurrentToken } from '../helpers/tokenLocalStorage';
 import '../assets/styles/therapists.css';
 
 const TherapistList = ({
-  therapistList,
+  therapists,
   getTherapists,
   application,
   getFavorites,
@@ -22,15 +22,33 @@ const TherapistList = ({
   addFavoriteTherapist,
   removeFavoriteTherapist,
 }) => {
-  const renderTherapists = () => therapistList.list.map(therapist => (
-    <Therapist
-      key={therapist.id}
-      therapist={therapist}
-      userId={authentication.id}
-      addFavoriteTherapist={addFavoriteTherapist}
-      removeFavoriteTherapist={removeFavoriteTherapist}
-    />
-  ));
+  const isAlreadyAFavorite = therapist => {
+    const userFavorites = therapists.favoriteList;
+    return userFavorites.some(favoriteTherapist => favoriteTherapist.id === therapist.id);
+  };
+
+  const renderTherapists = () => {
+    let therapistsListToRender;
+
+    if (therapists.isFavorite) {
+      therapistsListToRender = therapists.favoriteList;
+    } else {
+      therapistsListToRender = therapists.userList;
+    }
+
+    return (
+      therapistsListToRender.map(therapist => (
+        <Therapist
+          key={therapist.id}
+          therapist={therapist}
+          userId={authentication.id}
+          addFavoriteTherapist={addFavoriteTherapist}
+          removeFavoriteTherapist={removeFavoriteTherapist}
+          isAlreadyFavorite={therapists.isFavorite ? true : isAlreadyAFavorite(therapist)}
+        />
+      ))
+    );
+  };
 
   const renderError = () => (
     `Error: ${authentication.message}. Please try again.`
@@ -44,6 +62,7 @@ const TherapistList = ({
     if (!validateCurrentToken()) {
       return renderLogin();
     }
+    getFavorites(authentication.id);
     return getTherapists();
   }, []);
 
@@ -83,7 +102,7 @@ const TherapistList = ({
   const renderComponent = () => (
     <div className="therapists">
       <h1 className="header-therapists">Therapists</h1>
-      {therapistList.isFavorite ? renderAllTherapistButton() : renderViewFavoritesButton() }
+      {therapists.isFavorite ? renderAllTherapistButton() : renderViewFavoritesButton() }
       {authentication.message !== '' ? <p className="errorAuth">{renderError()}</p> : null}
       <div className="scroll-container">
         <div className="therapist-container">
@@ -111,7 +130,7 @@ const therapistListItemShape = {
 };
 
 TherapistList.propTypes = {
-  therapistList: PropTypes.shape(therapistListItemShape).isRequired,
+  therapists: PropTypes.shape(therapistListItemShape).isRequired,
   getTherapists: PropTypes.func.isRequired,
   getFavorites: PropTypes.func.isRequired,
   application: PropTypes.string.isRequired,
@@ -122,7 +141,7 @@ TherapistList.propTypes = {
 
 const mapStateToProps = state => (
   {
-    therapistList: state.therapists,
+    therapists: state.therapists,
     application: state.application,
     authentication: state.authentication,
   }

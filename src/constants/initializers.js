@@ -24,6 +24,7 @@ export const authenticationInitializer = () => {
 };
 
 export const therapistsInitializer = {
-  list: [],
+  userList: [],
+  favoriteList: [],
   isFavorite: false,
 };

@@ -5,7 +5,7 @@ const therapists = (state = therapistsInitializer, action) => {
     case 'FETCH_THERAPISTS':
       return {
         ...state,
-        list: [
+        userList: [
           ...action.therapists,
         ],
         isFavorite: false,
@@ -13,7 +13,7 @@ const therapists = (state = therapistsInitializer, action) => {
     case 'FETCH_FAVORITE_THERAPISTS':
       return {
         ...state,
-        list: [
+        favoriteList: [
           ...action.therapists,
         ],
         isFavorite: true,

@@ -131,6 +131,8 @@ export const addFavoriteAPI = (userId, therapistId) => (
       },
     }).then(() => {
       dispatch(updateState('IDLE'));
+      dispatch(fetchFavoriteTherapistsAPI(userId));
+      dispatch(fetchTherapistsAPI());
     }).catch(error => {
       dispatch(updateState('IDLE'));
       dispatch(errorFetchingTherapists(error.response.data.message));
