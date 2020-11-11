@@ -3,6 +3,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Redirect,
 } from 'react-router-dom';
 import Nav from '../containers/Nav';
 import Footer from './Footer';
@@ -36,6 +37,9 @@ const App = () => (
           <Nav />
           <TherapistDetail />
           <Footer />
+        </Route>
+        <Route>
+          <Redirect to="/therapists" />
         </Route>
       </Switch>
     </div>

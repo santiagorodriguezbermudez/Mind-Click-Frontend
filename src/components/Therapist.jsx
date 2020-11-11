@@ -11,7 +11,6 @@ const Therapist = ({
   removeFavoriteTherapist,
   isAlreadyFavorite,
 }) => {
-  console.log('Rendering this therapist component');
   const handleAddFavorite = () => {
     addFavoriteTherapist(userId, therapist.id);
   };
