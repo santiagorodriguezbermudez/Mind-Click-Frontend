@@ -8,6 +8,7 @@ import processImg from '../assets/images/VP.svg';
 import testimonialImg1 from '../assets/images/martin.jpg';
 import testimonialImg2 from '../assets/images/paul.jpg';
 import testimonialImg3 from '../assets/images/michael.jpg';
+import { validateCurrentToken } from '../helpers/tokenLocalStorage';
 
 const Landing = () => {
   const arrayText = ['a Coach.', 'a Psychiatrist.', 'a psychologist.', 'mental health.', 'happiness.'];
@@ -23,7 +24,7 @@ const Landing = () => {
         <p className="sub-title">
           Signup and find the perfect help for your mental health.
         </p>
-        <Link to="/signup" className="hero-cta">Signup</Link>
+        {validateCurrentToken() ? null : <Link to="/signup" className="hero-cta">Signup</Link>}
       </main>
       <div className="process">
         <div className="step-by-step">
@@ -89,7 +90,7 @@ const Landing = () => {
           <h2>‘We should lock the door and scream that curse word we know. It’s a good one!’</h2>
           <h3>ANGER (Inside Out)</h3>
         </div>
-        <Link to="/signup" className="hero-cta">Signup</Link>
+        {validateCurrentToken() ? null : <Link to="/signup" className="hero-cta">Signup</Link>}
       </div>
     </div>
   );
