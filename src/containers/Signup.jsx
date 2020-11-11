@@ -14,13 +14,13 @@ const Signup = ({ application, signupApiCall, authenticationMessage }) => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    const user = {
-      name,
+    const signupData = {
+      full_name: name,
       email,
       password,
-      passwordConfirmation,
+      password_confirmation: passwordConfirmation,
     };
-    signupApiCall(user);
+    signupApiCall(signupData);
   };
 
   const renderError = () => (
@@ -110,7 +110,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  signupApiCall: user => dispatch(signupApiCall(user)),
+  signupApiCall: signupData => dispatch(signupApiCall('post', signupData)),
 });
 
 const connectSignup = connect(mapStateToProps, mapDispatchToProps)(Signup);

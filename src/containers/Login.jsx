@@ -13,11 +13,11 @@ const Login = ({ application, loginApiCall, authenticationMessage }) => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    const user = {
+    const loginData = {
       email,
       password,
     };
-    loginApiCall(user);
+    loginApiCall(loginData);
   };
 
   const renderError = () => (
@@ -85,7 +85,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  loginApiCall: user => dispatch(loginApiCall(user)),
+  loginApiCall: loginData => dispatch(loginApiCall('post', loginData)),
 });
 
 const connectedLogin = connect(mapStateToProps, mapDispatchToProps)(Login);

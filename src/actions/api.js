@@ -9,61 +9,39 @@ import updateState from './application';
 import { getCurrentToken } from '../helpers/tokenLocalStorage';
 import { fetchTherapists, showTherapist, fetchFavoriteTherapists } from './therapists';
 
-export const signupApiCall = user => (
+export const signupApiCall = (method, signupData) => (
   dispatch => {
     dispatch(updateState('LOADING'));
-    axios({
-      method: 'POST',
-      url: `${REACT_APP_API_URL}/signup`,
-      params: {
-        full_name: user.name,
-        email: user.email,
-        password: user.password,
-        password_confirmation: user.passwordConfirmation,
-      },
-      header: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-    }).then(response => {
-      const dataAuth = {
-        token: response.data.auth_token,
-        id: response.data.id,
-      };
-      dispatch(loggedInUser(dataAuth));
-      dispatch(updateState('IDLE'));
-    }).catch(e => {
-      dispatch(updateState('IDLE'));
-      dispatch(errorAuth(e.response.data.message));
-    });
+    return axios[method](`${REACT_APP_API_URL}/signup`, signupData)
+      .then(response => {
+        const dataAuth = {
+          token: response.data.auth_token,
+          id: response.data.id,
+        };
+        dispatch(loggedInUser(dataAuth));
+        dispatch(updateState('IDLE'));
+      }).catch(e => {
+        dispatch(updateState('IDLE'));
+        dispatch(errorAuth(e.response.data.message));
+      });
   }
 );
 
-export const loginApiCall = user => (
+export const loginApiCall = (method, loginData) => (
   dispatch => {
     dispatch(updateState('LOADING'));
-    axios({
-      method: 'POST',
-      url: `${REACT_APP_API_URL}/login`,
-      params: {
-        email: user.email,
-        password: user.password,
-      },
-      header: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-    }).then(response => {
-      const dataAuth = {
-        token: response.data.auth_token,
-        id: response.data.id,
-      };
-      dispatch(loggedInUser(dataAuth));
-      dispatch(updateState('IDLE'));
-    }).catch(e => {
-      dispatch(updateState('IDLE'));
-      dispatch(errorAuth(e.response.data.message));
-    });
+    return axios[method](`${REACT_APP_API_URL}/login`, loginData)
+      .then(response => {
+        const dataAuth = {
+          token: response.data.auth_token,
+          id: response.data.id,
+        };
+        dispatch(loggedInUser(dataAuth));
+        dispatch(updateState('IDLE'));
+      }).catch(e => {
+        dispatch(updateState('IDLE'));
+        dispatch(errorAuth(e.response.data.message));
+      });
   }
 );
 
