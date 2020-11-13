@@ -1,0 +1,130 @@
+.therapist-detail-container {
+  min-height: 10rem;
+}
+
+.therapist-detail-container h1 {
+  font-size: 2rem;
+  color: var(--secondary-color);
+  font-weight: bold;
+  margin: 0.25rem auto;
+  text-align: center;
+}
+
+.therapist-detail-container h3 {
+  font-size: 1.2rem;
+  color: var(--font-color);
+  font-style: italic;
+  margin: 0.25rem auto;
+  text-align: center;
+}
+
+.therapist-detail-container a {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  padding: 0.5rem 1.5rem;
+}
+
+.profile-image {
+  border-radius: 10%;
+  object-fit: cover;
+  object-position: top;
+  width: 300px;
+  height: 300px;
+  margin: 0 auto 0.5rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.therapist-description {
+  padding: 1rem;
+  margin: 3rem auto 0;
+  width: 95%;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 0.5px solid var(--font-color);
+  text-align: center;
+}
+
+.therapist-description h6,
+.therapist-description p {
+  margin: 1rem auto;
+}
+
+.personalityTitle {
+  margin: 1rem auto;
+}
+
+.personality-stars {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.personality-stars img {
+  width: 16px;
+  margin: 0 0.25rem;
+}
+
+/* star colors */
+.icon-color-1 {
+  filter: invert(14%) sepia(34%) saturate(5973%) hue-rotate(290deg) brightness(116%) contrast(115%);
+}
+
+.icon-color-2 {
+  filter: invert(12%) sepia(86%) saturate(2450%) hue-rotate(214deg) brightness(100%) contrast(111%);
+}
+
+.icon-color-3 {
+  filter: invert(9%) sepia(86%) saturate(6473%) hue-rotate(355deg) brightness(113%) contrast(96%);
+}
+
+.icon-color-4 {
+  filter: invert(60%) sepia(90%) saturate(2556%) hue-rotate(6deg) brightness(104%) contrast(102%);
+}
+
+.icon-color-5 {
+  filter: invert(45%) sepia(100%) saturate(742%) hue-rotate(68deg) brightness(94%) contrast(101%);
+}
+
+.icon-color-6 {
+  filter: invert(43%) sepia(65%) saturate(4939%) hue-rotate(2deg) brightness(98%) contrast(105%);
+}
+
+.icon-color-7 {
+  filter: invert(16%) sepia(95%) saturate(5822%) hue-rotate(309deg) brightness(85%) contrast(103%);
+}
+
+.icon-color-8 {
+  filter: invert(47%) sepia(88%) saturate(4184%) hue-rotate(194deg) brightness(103%) contrast(98%);
+}
+
+.icon-color-9 {
+  filter: invert(68%) sepia(96%) saturate(500%) hue-rotate(355deg) brightness(105%) contrast(104%);
+}
+
+.icon-color-10 {
+  filter: invert(87%) sepia(87%) saturate(3575%) hue-rotate(36deg) brightness(101%) contrast(80%);
+}
+
+.icon-color-11 {
+  filter: invert(74%) sepia(64%) saturate(4550%) hue-rotate(2deg) brightness(101%) contrast(102%);
+}
+
+.icon-color-12 {
+  filter: invert(18%) sepia(50%) saturate(6671%) hue-rotate(336deg) brightness(98%) contrast(99%);
+}
+
+@media (min-width: 720px) {
+  .therapist-description {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .therapist-description p {
+    width: 200px;
+    margin: 2rem;
+  }
+}

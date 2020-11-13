@@ -4,7 +4,7 @@ A frontend web application that provides you with a Mental Health Therapist Cata
 
 ## Live version
 
-- [Live demo - Work in progress]()
+- [Live Demo](https://mind-click.netlify.app)
 
 ## Front End build with
   - React JS
@@ -14,7 +14,7 @@ A frontend web application that provides you with a Mental Health Therapist Cata
 
 ## Tests
 
-To be determined
+Run `npm run tests` to run all of the testing suites on reducers and actions.
 
 ## Author
 

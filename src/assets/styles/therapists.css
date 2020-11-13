@@ -1,0 +1,132 @@
+.therapists {
+  min-height: 30rem;
+}
+
+.scroll-container {
+  overflow-x: scroll;
+}
+
+.therapist-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  padding: 2rem 0;
+}
+
+.header-therapists {
+  color: var(--secondary-color);
+  font-size: 2rem;
+  font-weight: bolder;
+  text-align: center;
+}
+
+.therapist-index-profile {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  padding: 1rem 0;
+  margin: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 11rem;
+}
+
+.therapist-index-profile:hover {
+  border: 0.5px solid var(--secondary-color);
+}
+
+.therapist-index-profile-image {
+  position: relative;
+}
+
+.therapist-index-profile-image img {
+  width: 30rem;
+  height: 20rem;
+  object-position: top;
+  object-fit: cover;
+  margin: 0 auto;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.therapist-index-profile-image span {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 1px solid var(--secondary-color);
+  padding: 0.5rem;
+  color: var(--primary-color);
+}
+
+.therapist-index-profile-description {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 0.25rem 2rem;
+  text-align: center;
+}
+
+.therapist-index-profile-description p {
+  margin: 0.5rem 0;
+}
+
+.therapist-index-profile-description button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
+  padding: 0.5rem 1.5rem;
+  margin: 0.5rem 0;
+}
+
+.therapist-index-profile-description a {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  border: 1px solid var(--secondary-color);
+  padding: 0.5rem 1.5rem;
+  margin: 0.5rem 0;
+}
+
+.therapist-index-profile-description a:hover {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  padding: 0.25rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.therapist-name {
+  color: var(--secondary-color);
+  font-size: 1.5rem;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.favorite-button {
+  margin: 1rem auto 0;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
+  border-radius: 5px;
+}
+
+@media (min-width: 350px) {
+  .therapist-index-profile {
+    width: 15rem;
+  }
+}
+
+@media (min-width: 720px) {
+  .therapist-index-profile {
+    width: 30rem;
+  }
+}

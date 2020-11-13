@@ -1,0 +1,147 @@
+.hero {
+  background-image: linear-gradient(to bottom, transparent 1%, #e5e5e5e5 50%, transparent 100%), url("../images/Hero-img.jpg");
+  background-position: center;
+  background-size: cover;
+  min-height: 30rem;
+  padding: 8rem 1rem 3rem;
+  text-align: center;
+  color: var(--hero-txt-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-title {
+  font-size: 2rem;
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+}
+
+.sub-title {
+  color: var(--primary-color);
+  line-height: 1.2rem;
+  background-color: var(--background-link);
+  padding: 0.5rem;
+  border-radius: 0.1rem;
+}
+
+.hero-cta {
+  border-radius: 1rem;
+  background-color: var(--secondary-color);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  padding: 0.5rem 1rem;
+  margin: 2rem 0 0.5rem;
+  color: var(--primary-color);
+}
+
+.process {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5rem auto 10rem;
+  width: 100%;
+  padding: 1rem 2rem;
+}
+
+.step-by-step {
+  margin: 1rem 0;
+}
+
+.step-by-step div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-by-step p {
+  display: inline-block;
+  margin: 1rem 0 1rem 1rem;
+  text-align: center;
+  padding: 0;
+  color: var(--font-color);
+}
+
+.process-img {
+  padding-right: 1rem;
+}
+
+.phrase-section {
+  background-image: linear-gradient(to bottom, transparent 1%, #000 100%), url("../images/Quote-img.jpg");
+  background-position: bottom;
+  background-size: cover;
+  min-height: 25rem;
+  padding: 5rem 1rem 3rem;
+  text-align: center;
+  margin: 5rem 0;
+}
+
+.phrase-section h2 {
+  font-size: 2rem;
+  font-style: italic;
+  color: var(--primary-color);
+}
+
+.phrase-section h3 {
+  font-size: 1.2rem;
+  margin: 1rem 0;
+  color: var(--primary-color);
+}
+
+.quote {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.carousel {
+  margin: 3rem 0;
+}
+
+.testimonial {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.testimonial img {
+  object-position: center;
+  object-fit: cover;
+  height: 30rem;
+}
+
+@media (min-width: 720px) {
+  .main-title {
+    font-size: 4rem;
+  }
+
+  .process {
+    flex-direction: row;
+  }
+
+  .step-by-step div {
+    justify-content: flex-start;
+  }
+
+  .step-by-step p {
+    text-align: justify;
+  }
+
+  .carousel {
+    background-color: var(--primary-color);
+  }
+
+  .testimonial {
+    width: auto;
+  }
+
+  .testimonial img {
+    height: 50rem;
+  }
+}
